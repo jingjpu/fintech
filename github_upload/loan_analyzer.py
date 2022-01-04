@@ -21,6 +21,7 @@ loan_costs = [500, 600, 200, 1000, 450]
 
 number_loans=len(loan_costs)
 print(f'there are {number_loans} loans')
+
 # What is the total of all loans?
 # @TODO: Use the `sum` function to calculate the total of all loans in the list.
 # Print the total value of the loans
@@ -71,6 +72,7 @@ loan = {
 # @TODO: Use get() on the dictionary of additional information to extract the Future Value and Remaining Months on the loan.
 # Print each variable.
 # YOUR CODE HERE!
+
 future_value=loan.get("future_value")
 remaining_months=loan.get("remaining_months")
 print(f'future value is {future_value}')
@@ -80,6 +82,7 @@ print(f'remaining there are {remaining_months} remaining')
 # Use a minimum required return of 20% as the discount rate.
 #   You'll want to use the **monthly** version of the present value formula.
 #   HINT: Present Value = Future Value / (1 + Discount_Rate/12) ** remaining_months
+
 present_value=(future_value/(1+.2/12)**remaining_months)
 print (f'present value is {present_value}')
 
@@ -89,6 +92,7 @@ print (f'present value is {present_value}')
 #    If the present value of the loan is greater than or equal to the cost, then print a message that says the loan is worth at least the cost to buy it.
 #    Else, the present value of the loan is less than the loan cost, then print a message that says that the loan is too expensive and not worth the price.
 # YOUR CODE HERE!
+
 if present_value >= loan['loan_price']:
     print('the loan is at least worth the cost to buy it')
 else:
@@ -202,13 +206,17 @@ Output this list of inexpensive loans to a csv file
 header = ["loan_price", "remaining_months", "repayment_interval", "future_value"]
 
 # Set the output file path
-output_path = Path("inexpensive_loans.csv")
+output_path = Path("inexpensive_loans.csv") #outputs to relative path from execution folder
 
 # @TODO: Use the csv library and `csv.writer` to write the header row
 # and each row of `loan.values()` from the `inexpensive_loans` list.
 # YOUR CODE HERE!
+
 with open (output_path, 'w', newline='') as csvfile:
         csvwriter=csv.writer(csvfile)
         csvwriter.writerow(header)
         for row in inexpensive_loans:
             csvwriter.writerow(row.values())
+
+
+print ("DONE")
